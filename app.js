@@ -8,7 +8,9 @@ let validateData = data => {
 }
 
 let tareas = document.createElement('div');
-document.body.appendChild(tareas); // Añadirlo al DOM
+let contenedor = document.querySelector(".big-container");
+contenedor.append(tareas)
+// document.body.appendChild(tareas); // Añadirlo al DOM
 
 let tasks = form.addEventListener('submit', e => {
     e.preventDefault()    
@@ -30,15 +32,24 @@ let tasks = form.addEventListener('submit', e => {
         taskItem.innerHTML =    
             `<div class="task-container">
                 <input type="checkbox" class="check-box"/>
-                <h3 class="task-text">${task.task}</h3>
+                <p class="task-text">${task.task}</p>
                 <button class="delete-btn">-</button>
             </div>`;
         
         let deleteBtn = taskItem.querySelector(".delete-btn");
-        deleteBtn.addEventListener("click", () => {
-            tareas.removeChild(taskItem);
-        });
+        deleteBtn.addEventListener("click", deleteClick);
 
+        function deleteClick(){
+            tareas.removeChild(taskItem);
+        }
+
+        let checkTask = taskItem.querySelector(".check-box");
+        checkTask.addEventListener("click", ()=>{
+            if(checkTask.checked){
+                alert('tarea terminada');
+                deleteClick()
+            }
+        } )
 
        tareas.append(taskItem)// ; // Agregar la tarea a la lista
 

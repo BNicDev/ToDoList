@@ -1,9 +1,13 @@
 .big-container{
+    width: 500px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #b9b9b9;
+    justify-content: center;
+    background-color: white;
     padding-bottom: 20px;
+    border: 1px solid grey;
 }
 
 .header{
@@ -24,6 +28,8 @@
 }
 .delete-btn{
     margin-right: 20px;
+    height: 20px;
+    width: 20px;
 }
 
 .check-box{
@@ -31,9 +37,17 @@
 }
 
 .task-container{
-    width: 400px;
-    background-color: #b9b9b9;
+    width: 250px; 
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid grey;
+}
+.check-box{
+    height: 20px;
+    width: 20px;
+    border: 1px solid green;
 }
