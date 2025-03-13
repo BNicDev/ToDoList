@@ -7,14 +7,6 @@ let validateData = data => {
     return errors
 }
 
-let render = ({task}) => {
-   return `
-    <div>
-        <p style="color: green">"${task.task}"</p>
-    </div>
-   `
-};
-
 let tareas = document.createElement('div');
 document.body.appendChild(tareas); // Añadirlo al DOM
 
@@ -35,9 +27,20 @@ let tasks = form.addEventListener('submit', e => {
 
 
         let taskItem = document.createElement("p");
-        taskItem.textContent = `✔ ${task.task}`;
+        taskItem.innerHTML =    
+            `<div class="task-container">
+                <input type="checkbox" class="check-box"/>
+                <h3 class="task-text">${task.task}</h3>
+                <button class="delete-btn">-</button>
+            </div>`;
+        
+        let deleteBtn = taskItem.querySelector(".delete-btn");
+        deleteBtn.addEventListener("click", () => {
+            tareas.removeChild(taskItem);
+        });
 
-        tareas.appendChild(taskItem); // Agregar la tarea a la lista
+
+       tareas.append(taskItem)// ; // Agregar la tarea a la lista
 
         form.reset();
     });
